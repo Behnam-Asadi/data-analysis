@@ -7,7 +7,7 @@ library(tidyverse)
 library(knitr)
 
 # Read the mobile data from a CSV file
-mobile <- read.csv("../data/mobile_data.csv")
+mobile <- read.csv("data/mobile_data.csv")
 
 # Group the mobile data by company and count the number of rows in each group
 # Then sort the data by the number of rows in each group in descending order

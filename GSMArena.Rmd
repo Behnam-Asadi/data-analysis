@@ -34,7 +34,7 @@ library(knitr)
 ```
 ```{r}
 # Read the mobile data from a CSV file
-mobile <- read.csv("../data/mobile_data.csv")
+mobile <- read.csv("data/mobile_data.csv")
 
 # Group the mobile data by company and count the number of rows in each group
 # Then sort the data by the number of rows in each group in descending order
@@ -80,7 +80,6 @@ p <- ggplot(data = mobile, aes(x = year, y = dim_length)) +
   xlab('year') + ylab('Mobile length') + ggtitle("Length in Time") +
   geom_abline(intercept = coef[1], slope = coef[2], colour = "#F44336") +
   my_theme
-
 p
 ```
 ```{r}
@@ -91,11 +90,8 @@ p <- ggplot(data = len_per_year, aes(x = year, y = mean_len)) +
   xlab('year') + ylab('Mobile length') +
   ggtitle("Average Length in Time") +
   my_theme
-
 p
 ```
-
-
 
 
 ```{r}
@@ -118,7 +114,6 @@ p <- ggplot(data = mobile, aes(x = year, y = dim_breadth)) +
   xlab('Year') + ylab('Mobile Breadth') + ggtitle("Breadth in Time") +
   geom_abline(intercept = coef[1], slope = coef[2], colour = "#F44336") +
   my_theme
-
 p
 ```
 
@@ -129,7 +124,6 @@ p <- ggplot(data = breadth_per_year, aes(x = year, y = mean_breadth)) +
   xlab('year') + ylab('Mobile breadth') +
   ggtitle("Average Breadth per Year") +
   my_theme
-
 p
 ```
 
@@ -157,7 +151,6 @@ p <- ggplot(data = mobile, aes(x = year, y = dim_thickness)) +
   ggtitle("Thickness in Time") +
   geom_abline(intercept = coef[1], slope = coef[2], colour = "#F44336") + 
   my_theme
-
 p
 ```
 ```{r}
@@ -168,7 +161,6 @@ p <- ggplot(data = thick_per_year, aes(x = year, y = mean_thick)) +
   xlab("Year") + ylab("Mobile thickness") +
   ggtitle("Average Thickness per Year") + 
   my_theme
-
 p
 ```
 
@@ -190,7 +182,6 @@ p <- ggplot(data = mobile_prices, aes(x = sim_no, y = price)) +
   xlab("Sim Number") +
   ylab("Price") +
   my_theme
-
 p
 ```
 
@@ -209,7 +200,6 @@ p <- ggplot(mobile[which(mobile$year==2017),],
   xlab('Audio Jack') + ylab('Thickness') +
   ggtitle("Thickness vs Audio Jack") +
   my_theme + theme(legend.position="none")
-
 p
 ```
 
@@ -277,8 +267,13 @@ p = ggplot(data = mobile %>% drop_na(den_vs_water),
 p
 
 # Display a table of the phones with less density than water
-mobile %>% drop_na(den_vs_water) %>% filter(den_vs_water == 'Less Dense') %>% select(company, device, price, year, announced, dim_length, dim_breadth, dim_thickness, weight) %>% head() %>% kable()
-
+mobile %>%
+  drop_na(den_vs_water) %>%
+  filter(den_vs_water == 'Less Dense') %>%
+  select(company, device, price, year, announced,
+         dim_length, dim_breadth, dim_thickness, weight) %>%
+  head() %>%
+  kable()
 ```
 
 ***
@@ -303,7 +298,7 @@ ggplot(data = mobile, aes(x = battery_mah, y = weight)) +
 
 
 ```{r}
-# Finding correlation between battery capacity and weight of the phones
+# Find correlation between battery capacity and weight of the phones
 cor(mobile$battery_mah, mobile$weight, use="complete.obs")
 ```
 

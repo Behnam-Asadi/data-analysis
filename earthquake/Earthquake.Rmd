@@ -39,10 +39,7 @@ library(PerformanceAnalytics)
 library(maps)
 library(ggpubr)
 library(tidyr)
-library(tidytext)
-library(wordcloud2)
-library(ngram)
-library(qdapRegex)
+
 ```
 
 ```{r include=FALSE, cache=FALSE}
